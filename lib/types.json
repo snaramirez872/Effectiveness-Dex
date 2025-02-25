@@ -1,0 +1,112 @@
+{
+    "types": {
+      "Normal": {
+        "half_damage": ["Rock", "Ghost"],
+        "full_damage": ["Normal", "Flying", "Poison", "Bug", "Steel", "Fairy"],
+        "no_damage": ["Ghost"],
+        "double_damage": ["Fighting"]
+      },
+      "Fire": {
+        "half_damage": ["Fire", "Water", "Rock", "Dragon"],
+        "full_damage": ["Bug", "Steel", "Fairy"],
+        "no_damage": [],
+        "double_damage": ["Grass", "Ice", "Bug", "Steel"]
+      },
+      "Water": {
+        "half_damage": ["Water", "Grass", "Dragon"],
+        "full_damage": ["Fire", "Ground", "Rock"],
+        "no_damage": [],
+        "double_damage": ["Fire", "Ground", "Rock"]
+      },
+      "Grass": {
+        "half_damage": ["Fire", "Grass", "Poison", "Flying", "Bug"],
+        "full_damage": ["Water", "Ground", "Rock"],
+        "no_damage": [],
+        "double_damage": ["Water", "Ground", "Rock"]
+      },
+      "Electric": {
+        "half_damage": ["Electric", "Ground"],
+        "full_damage": ["Flying", "Water"],
+        "no_damage": ["Ground"],
+        "double_damage": ["Flying", "Water"]
+      },
+      "Bug": {
+        "half_damage": ["Fire", "Fighting", "Flying", "Ghost", "Steel", "Fairy"],
+        "full_damage": ["Grass", "Psychic", "Dark"],
+        "no_damage": [],
+        "double_damage": ["Grass", "Psychic", "Dark"]
+      },
+      "Fighting": {
+        "half_damage": ["Flying", "Psychic", "Fairy"],
+        "full_damage": ["Normal", "Rock", "Ice", "Dark", "Steel"],
+        "no_damage": ["Ghost"],
+        "double_damage": ["Normal", "Rock", "Ice", "Dark", "Steel"]
+      },
+      "Flying": {
+        "half_damage": ["Electric", "Rock", "Steel"],
+        "full_damage": ["Fighting", "Bug", "Grass"],
+        "no_damage": [],
+        "double_damage": ["Fighting", "Bug", "Grass"]
+      },
+      "Poison": {
+        "half_damage": ["Poison", "Ghost", "Steel"],
+        "full_damage": ["Bug", "Fairy"],
+        "no_damage": [],
+        "double_damage": ["Grass"]
+      },
+      "Ground": {
+        "half_damage": ["Flying", "Bug"],
+        "full_damage": ["Fire", "Electric", "Poison", "Rock", "Steel"],
+        "no_damage": ["Flying"],
+        "double_damage": ["Fire", "Electric", "Poison", "Rock", "Steel"]
+      },
+      "Rock": {
+        "half_damage": ["Fighting", "Ground", "Steel"],
+        "full_damage": ["Fire", "Flying", "Bug", "Ice"],
+        "no_damage": [],
+        "double_damage": ["Fire", "Flying", "Bug", "Ice"]
+      },
+      "Ghost": {
+        "half_damage": ["Ghost", "Dark"],
+        "full_damage": ["Ghost", "Psychic"],
+        "no_damage": ["Normal"],
+        "double_damage": ["Psychic"]
+      },
+      "Steel": {
+        "half_damage": ["Fire", "Water", "Electric", "Steel"],
+        "full_damage": ["Bug", "Rock", "Fairy"],
+        "no_damage": [],
+        "double_damage": ["Bug", "Rock", "Fairy"]
+      },
+      "Dragon": {
+        "half_damage": ["Steel"],
+        "full_damage": ["Dragon"],
+        "no_damage": ["Fairy"],
+        "double_damage": ["Dragon"]
+      },
+      "Dark": {
+        "half_damage": ["Fighting", "Dark", "Fairy"],
+        "full_damage": ["Ghost", "Psychic"],
+        "no_damage": [],
+        "double_damage": ["Ghost", "Psychic"]
+      },
+      "Fairy": {
+        "half_damage": ["Fire", "Poison", "Steel"],
+        "full_damage": ["Fighting", "Dragon", "Dark"],
+        "no_damage": [],
+        "double_damage": ["Fighting", "Dragon", "Dark"]
+      },
+      "Ice": {
+        "half_damage": ["Fire", "Water", "Ice", "Steel"],
+        "full_damage": ["Flying", "Ground", "Grass", "Dragon"],
+        "no_damage": [],
+        "double_damage": ["Flying", "Ground", "Grass", "Dragon"]
+      },
+      "Psychic": {
+        "half_damage": ["Psychic", "Steel"],
+        "full_damage": ["Fighting", "Poison"],
+        "no_damage": [],
+        "double_damage": ["Fighting", "Poison"]
+      }
+    }
+  }
