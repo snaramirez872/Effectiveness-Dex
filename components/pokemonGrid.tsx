@@ -8,14 +8,13 @@ export function PokemonGrid() {
     return (
         <div className="flex flex-col justify-center">
             <div>
-                <h3 className="text-2xl py-6 text-center">Pokemon Type Effectiveness</h3>
+                <h3 className="mb-[5vh] text-2xl py-6 text-center">Pok&eacute;mon Type Effectiveness</h3>
                 <div className="flex flex-col justify-center items-center">
-                    <label htmlFor='pkmn-name'>Pokemon Name</label>
                     <input 
                         type='text' 
                         id="pkmn-name"
                         autoCorrect="off"
-                        className="text-left px-2 py-1 w-13 text-black-500"
+                        className="rounded-md text-left px-2 py-1 w-[70vh] text-black"
                         placeholder='Charizard, Venusaur, Blastoise, Pikachu, etc.' 
                         value={searchText}
                         onChange={(ev) => setSearchText(ev.target.value)}
@@ -27,84 +26,20 @@ export function PokemonGrid() {
                     </div>
                 )}
             </div>
-            <div id="container" className="overflow-y-scroll h-[50vh] w-[120vh] mx-auto">
-                <div className="mb-32 grid place-items-center text-center grid-cols-4 overflow-hidden">
-                    <PokemonCard name="Venusaur" />
-                    <PokemonCard name="Blastoise" />
-                    <PokemonCard name="Charizard" />
-                    <PokemonCard name="Pikachu" />
-                    <PokemonCard name="Pikachu" />
-                    <PokemonCard name="Pikachu" />
-                    <PokemonCard name="Pikachu" />
-                    <PokemonCard name="Pikachu" />
-                    <PokemonCard name="Pikachu" />
-                    <PokemonCard name="Pikachu" />
-                    <PokemonCard name="Pikachu" />
-                    <PokemonCard name="Pikachu" />
-                    <PokemonCard name="Pikachu" />
-                    <PokemonCard name="Pikachu" />
-                    <PokemonCard name="Pikachu" />
-                    <PokemonCard name="Pikachu" />
-                    <PokemonCard name="Pikachu" />
-                    <PokemonCard name="Pikachu" />
-                    <PokemonCard name="Pikachu" />
-                    <PokemonCard name="Pikachu" />
-                    <PokemonCard name="Pikachu" />
-                    <PokemonCard name="Pikachu" />
-                    <PokemonCard name="Pikachu" />
-                    <PokemonCard name="Pikachu" />
-                    <PokemonCard name="Pikachu" />
-                    <PokemonCard name="Pikachu" />
-                    <PokemonCard name="Pikachu" />
-                    <PokemonCard name="Pikachu" />
-                    <PokemonCard name="Pikachu" />
-                    <PokemonCard name="Pikachu" />
-                    <PokemonCard name="Pikachu" />
-                    <PokemonCard name="Pikachu" />
-                    <PokemonCard name="Pikachu" />
-                    <PokemonCard name="Pikachu" />
-                    <PokemonCard name="Pikachu" />
-                    <PokemonCard name="Pikachu" />
-                    <PokemonCard name="Pikachu" />
-                    <PokemonCard name="Pikachu" />
-                    <PokemonCard name="Pikachu" />
-                    <PokemonCard name="Pikachu" />
-                    <PokemonCard name="Pikachu" />
-                    <PokemonCard name="Pikachu" />
-                    <PokemonCard name="Pikachu" />
-                    <PokemonCard name="Pikachu" />
-                    <PokemonCard name="Pikachu" />
-                    <PokemonCard name="Pikachu" />
-                    <PokemonCard name="Pikachu" />
-                    <PokemonCard name="Pikachu" />
-                    <PokemonCard name="Pikachu" />
-                    <PokemonCard name="Pikachu" />
-                    <PokemonCard name="Pikachu" />
-                    <PokemonCard name="Pikachu" />
-                    <PokemonCard name="Pikachu" />
-                    <PokemonCard name="Pikachu" />
-                    <PokemonCard name="Pikachu" />
-                    <PokemonCard name="Pikachu" />
-                    <PokemonCard name="Pikachu" />
-                    <PokemonCard name="Pikachu" />
-                    <PokemonCard name="Pikachu" />
-                    <PokemonCard name="Pikachu" />
-                    <PokemonCard name="Pikachu" />
-                    <PokemonCard name="Pikachu" />
-                    <PokemonCard name="Pikachu" />
-                    <PokemonCard name="Pikachu" />
-                    <PokemonCard name="Pikachu" />
-                    <PokemonCard name="Pikachu" />
-                    <PokemonCard name="Pikachu" />
-                    <PokemonCard name="Pikachu" />
-                    <PokemonCard name="Pikachu" />
-                    <PokemonCard name="Pikachu" />
-                    <PokemonCard name="Pikachu" />
-                    <PokemonCard name="Pikachu" />
-                    <PokemonCard name="Pikachu" />
-                    <PokemonCard name="Pikachu" />
-                    <PokemonCard name="Pikachu" />
-                </div>
+            <div id="container" className="mt-[7vh] overflow-y-scroll h-[50vh] w-[120vh] mx-auto">
+                {searchText ? (
+                    <div className="mb-32 grid place-items-center text-center grid-cols-4 overflow-hidden">
+                        <PokemonCard name={searchText} />
+                    </div>
+                ) : (
+                    <div className="text-center">
+                        <ul className="text-white text-xl">
+                            <li className="mb-2">Type the Pok&eacute;mon you want in the search bar</li>
+                            <li className="mb-2">All Pok&eacute;mon that your desired Pok&eacute;mon are effective against in battle wil be displayed</li>
+                            <li className="mb-2">You are able to click and scroll through each Pok&eacute;mon card as needed for more information</li>
+                        </ul>
+                    </div>
+                )}
             </div>
         </div>
     );
