@@ -15,11 +15,11 @@ export function PokemonGrid({ pokemonList } : PokemonGridProps) {
     const [ searchText, setSearchText ] = useState("");
     const [ submitText, setSubmitText ] = useState("");
 
-    function handleChange(ev : any) {
+    function handleChange(ev : React.ChangeEvent<HTMLInputElement>) {
         setSearchText(ev.target.value);
     }
 
-    function handleKey(ev : any) {
+    function handleKey(ev : React.KeyboardEvent<HTMLInputElement>) {
         if (ev.key === "Enter") {
             setSubmitText(searchText);
         }
@@ -33,6 +33,7 @@ export function PokemonGrid({ pokemonList } : PokemonGridProps) {
                     <input 
                         type='text' 
                         id="pkmn-name"
+                        autoComplete="off"
                         autoCorrect="off"
                         className="rounded-md text-left px-2 py-1 w-[70vh] text-black"
                         placeholder='Charizard, Venusaur, Blastoise, Pikachu, etc.' 
@@ -50,7 +51,7 @@ export function PokemonGrid({ pokemonList } : PokemonGridProps) {
             <div id="container" className="mt-[7vh] overflow-y-scroll h-[50vh] w-[120vh] mx-auto">
                 {submitText ? (
                     <div className="mb-32 grid place-items-center text-center grid-cols-4 overflow-hidden">
-                        {pokemonList.map((mon : any, idx : number) => {
+                        {pokemonList.map((mon : Pokemon, idx : number) => {
                             return (
                                 <PokemonCard key={mon.name || idx} name={mon.name} />
                             )
