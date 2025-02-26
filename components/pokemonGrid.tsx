@@ -1,10 +1,14 @@
 "use client"
 import { useState } from "react"
 import { PokemonCard } from "./pokemonCards";
-import { getPKMNDetails } from "@/lib/pokemonAPI";
+//import { getPKMNDetails } from "@/lib/pokemonAPI";
+
+interface Pokemon {
+    name: string;
+}
 
 interface PokemonGridProps {
-    pokemonList: any
+    pokemonList: Pokemon[]
 }
 
 export function PokemonGrid({ pokemonList } : PokemonGridProps) {
