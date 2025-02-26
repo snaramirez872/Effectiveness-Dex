@@ -1,7 +1,10 @@
 import { PokemonGrid } from "@/components/pokemonGrid";
+import { getPokemonList } from "@/lib/pokemonAPI";
 
-export default function Home() {
+export default async function Home() {
+  const pokemonList = await getPokemonList();
+  console.log(pokemonList);
   return (
-      <PokemonGrid />
+      <PokemonGrid pokemonList={pokemonList}/>
   );
 }

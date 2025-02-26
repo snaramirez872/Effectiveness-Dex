@@ -1,9 +1,25 @@
 "use client"
 import { useState } from "react"
 import { PokemonCard } from "./pokemonCards";
+import { getPKMNDetails } from "@/lib/pokemonAPI";
 
-export function PokemonGrid() {
+interface PokemonGridProps {
+    pokemonList: any
+}
+
+export function PokemonGrid({ pokemonList } : PokemonGridProps) {
     const [ searchText, setSearchText ] = useState("");
+    const [ submitText, setSubmitText ] = useState("");
+
+    function handleChange(ev : any) {
+        setSearchText(ev.target.value);
+    }
+
+    function handleKey(ev : any) {
+        if (ev.key === "Enter") {
+            setSubmitText(searchText);
+        }
+    }
 
     return (
         <div className="flex flex-col justify-center">
@@ -17,19 +33,24 @@ export function PokemonGrid() {
                         className="rounded-md text-left px-2 py-1 w-[70vh] text-black"
                         placeholder='Charizard, Venusaur, Blastoise, Pikachu, etc.' 
                         value={searchText}
-                        onChange={(ev) => setSearchText(ev.target.value)}
+                        onChange={handleChange}
+                        onKeyDown={handleKey}
                     />
                 </div>
-                {searchText && (
+                {submitText && (
                     <div className="text-center py-2">
-                        <h4>You Entered: {searchText.toUpperCase()}</h4>
+                        <h4>You Entered: {submitText.toUpperCase()}</h4>
                     </div>
                 )}
             </div>
             <div id="container" className="mt-[7vh] overflow-y-scroll h-[50vh] w-[120vh] mx-auto">
-                {searchText ? (
+                {submitText ? (
                     <div className="mb-32 grid place-items-center text-center grid-cols-4 overflow-hidden">
-                        <PokemonCard name={searchText} />
+                        {pokemonList.map((mon : any, idx : number) => {
+                            return (
+                                <PokemonCard key={mon.name || idx} name={mon.name} />
+                            )
+                        })}
                     </div>
                 ) : (
                     <div className="text-center">
