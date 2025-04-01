@@ -1,16 +1,25 @@
-import React, { useState } from "react";
+"use client"
+import React, { useState, useEffect } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 
 interface SearchBarProps {
     onSearch: (query: string) => void;
 }
 
 export default function SearchBar({ onSearch }: SearchBarProps) {
-    const [query, setQuery] = useState("");
+    const router = useRouter();
+    const searchParams = useSearchParams();
+    const [query, setQuery] = useState(searchParams.get("query") || "");
+
+    useEffect(() => {
+        if (query) onSearch(query); // if user goes back from types page
+    }, []);
 
     const handleSearch = (e: React.FormEvent) => {
         e.preventDefault();
         const formatQUery = query.trim().toLowerCase();
         if (formatQUery) {
+            router.replace(`/?query=${formatQUery}`, {scroll: false}); // update URL
             onSearch(formatQUery);
         }
     };
