@@ -1,6 +1,6 @@
 "use client"
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useSearchParams } from "next/navigation";
 import SearchBar from "@/components/SearchBar";
 import { fetchPokemon, PokemonData } from "@/lib/pokemonAPI";
@@ -11,12 +11,7 @@ export default function Home() {
   const [pokemon, setPokemon] = useState<PokemonData | null>(null);
   const [error, setError] = useState<string>("");
 
-  useEffect(() => {
-    if (initQuery)
-        handleSearch(initQuery); // restor search results
-  }, []);
-
-  const handleSearch = async (name: string) => {
+  const handleSearch = useCallback(async (name: string) => {
     setError("");
     setPokemon(null);
 
@@ -26,7 +21,12 @@ export default function Home() {
     } catch (err) {
       setError((err as Error).message);
     }
-  }
+  }, []);
+
+  useEffect(() => {
+    if (initQuery) handleSearch(initQuery); // restore search results
+  }, [initQuery, handleSearch]);
+
   return (
     <>
       <SearchBar onSearch={handleSearch} />

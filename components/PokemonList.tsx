@@ -24,7 +24,7 @@ export const PokemonListByType: React.FC<PokemonListByTypeProps> = ({ type })  =
                 const dat = await getPokemonListByType(type) as unknown as PokemonAPIRes;
                 setPokemonList(dat.pokemon);
             } catch (err) {
-                setError("Failed to fetch Pokémon for this type.");
+                setError((err as Error).message);
             }
         };
 
