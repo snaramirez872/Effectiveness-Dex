@@ -1,9 +1,9 @@
 "use client";
 import Link from "next/link";
 import { useState, useEffect, useCallback, Suspense } from "react";
+import { fetchPokemon, PokemonData } from "@/lib/pokemonAPI";
 import { useSearchParams } from "next/navigation";
 import SearchBar from "@/components/SearchBar";
-import { fetchPokemon, PokemonData } from "@/lib/pokemonAPI";
 
 // Helper component to handle search params safely
 function SearchParamsHandler({ onSearch }: { onSearch: (query: string) => void }) {
@@ -35,14 +35,20 @@ export default function Home() {
 
   return (
     <>
+      {/* Wrap SearchBar and SearchParamsHandler in Suspense */}
       <Suspense fallback={<p>Loading search...</p>}>
         <SearchParamsHandler onSearch={handleSearch} />
+        <SearchBar onSearch={handleSearch} />
       </Suspense>
-      <SearchBar onSearch={handleSearch} />
+
       {error && <p>{error}</p>}
       {pokemon && (
         <div className="content">
-          <h2>Types that {pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)} is strong against:</h2>
+          <h2>
+            Types that{" "}
+            {pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)} is
+            strong against:
+          </h2>
           <div className="types">
             {pokemon.strongAgainst.length > 0 ? (
               pokemon.strongAgainst.map((type) => (

@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useCallback } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import SearchParamsHandler from "./SearchParamsHandler";
+import SearchParamsHandler from "@/components/SearchParamsHandler";
 
 interface SearchBarProps {
   onSearch: (query: string) => void;
