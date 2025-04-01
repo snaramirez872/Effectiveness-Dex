@@ -1,6 +1,7 @@
 "use client"
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
+import SearchParamsHandler from "./SearchParamsHandler";
 
 interface SearchBarProps {
     onSearch: (query: string) => void;
@@ -19,30 +20,32 @@ export default function SearchBar({ onSearch }: SearchBarProps) {
     }, [router, onSearch]);
 
     useEffect(() => {
-        if (query) onSearch(query); // if user goes back from types page
-    }, []);
-
-    const handleSearch = (e: React.FormEvent) => {
-        e.preventDefault();
-        const formatQuery = query.trim().toLowerCase();
-        if (formatQuery) performSearch(formatQuery);
-    };
+        if (query) performSearch(query); // if user goes back from types page
+    }, [query, performSearch]);
 
     return (
-        <form onSubmit={handleSearch} className='flex gap-2 p-4'>
-            <input 
-                type='text'
-                placeholder='Enter Pokémon name...'
-                value={query}
-                onChange={(e) => setQuery(e.target.value)}
-                className='border rounded p-2 text-black'
-            />
-            <button
-                type='submit'
-                className='bg-blue-500 text-white p-2 rounded'
+        <Suspense fallback={<p>Loading search...</p>}>
+            <form 
+                onSubmit={(e) => {
+                    e.preventDefault();
+                    performSearch(query.trim().toLowerCase());
+                }} 
+                className='flex gap-2 p-4'
             >
-                Search
-            </button>
-        </form>
+                <input 
+                    type='text'
+                    placeholder='Enter Pokémon name...'
+                    value={query}
+                    onChange={(e) => setQuery(e.target.value)}
+                    className='border rounded p-2 text-black'
+                />
+                <button
+                    type='submit'
+                    className='bg-blue-500 text-white p-2 rounded'
+                >
+                    Search
+                </button>
+            </form>
+        </Suspense>
     );
 }
