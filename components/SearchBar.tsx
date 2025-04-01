@@ -25,6 +25,7 @@ export default function SearchBar({ onSearch }: SearchBarProps) {
 
     return (
         <Suspense fallback={<p>Loading search...</p>}>
+            <SearchParamsHandler setQuery={setQuery} />
             <form 
                 onSubmit={(e) => {
                     e.preventDefault();
